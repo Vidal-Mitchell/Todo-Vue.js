@@ -1,0 +1,160 @@
+@import "libs/normalize";
+
+body {
+  background-color: #fafafa;
+}
+
+.todo {
+  width: 530px;
+  background-color: #fff;
+  margin: 10% auto;
+  box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.01),
+    0px 25px 40px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ebebeb;
+
+  @media (max-width: 650px) {
+    max-width: 530px;
+    width: 100%;
+  }
+
+  &__header {
+    background-color: #2d87f6;
+    padding: 20px 30px;
+
+    h4 {
+      color: #fff;
+      font-size: 22px;
+      font-weight: 500;
+    }
+  }
+
+  &__add-field {
+    display: flex;
+    border-bottom: 1px solid #f4f4f4;
+
+    input {
+      border: 0;
+      font-size: 18px;
+      padding: 20px;
+      flex: 1;
+
+      &::-webkit-input-placeholder {
+        color: #bfbfbf;
+      }
+      &:-ms-input-placeholder {
+        color: #bfbfbf;
+      }
+      &::-ms-input-placeholder {
+        color: #bfbfbf;
+      }
+      &::placeholder {
+        color: #bfbfbf;
+      }
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background-color: transparent;
+      width: 65px;
+      height: 65px;
+      cursor: pointer;
+
+      svg {
+        position: relative;
+        right: -1px;
+      }
+
+      &:hover {
+        background-color: #fbfbfb;
+        svg {
+          path {
+            fill: #202020;
+          }
+        }
+      }
+    }
+  }
+
+  &__list {
+    &-item {
+      $self: &;
+      display: flex;
+      padding: 20px;
+      border-bottom: 1px solid #f4f4f4;
+
+      &:hover {
+        background-color: #e5e5e542;
+
+        .todo__list-item-input {
+          background-color: #b6b6b642;
+          border-radius: 2px;
+        }
+      }
+
+      &--completed {
+        text-decoration: line-through;
+        #{$self}-check {
+          svg {
+            display: block;
+          }
+        }
+
+        #{$self}-check,
+        #{$self}-check:hover {
+          background-color: #2d87f6;
+        }
+      }
+
+      &-check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #2d87f6;
+        border-radius: 30px;
+        min-width: 24px;
+        height: 24px;
+        cursor: pointer;
+
+        svg {
+          display: none;
+        }
+
+        &:hover {
+          background-color: #f8e0de;
+        }
+      }
+
+      &-input {
+        width: 100%;
+        margin: 0 15px;
+        padding: 0 5px;
+        border: none;
+
+        &:focus {
+          background-color: #e5e5e542;
+        }
+      }
+
+      &-remove {
+        cursor: pointer;
+        &:hover {
+          svg {
+            path {
+              fill: #202020;
+            }
+          }
+        }
+      }
+
+      p {
+        font-size: 18px;
+        flex: 1;
+      }
+    }
+  }
+}
